@@ -1,9 +1,22 @@
 import React from 'react';
 
-const PlayerList = () => {
+const PlayerList = ({ players, updateCurrentPlayer }) => {
     return (
         <div>
-            Player List
+            <ul className='collection with-header'>
+                <li className='collection-header'>
+                    <h4>Players</h4>
+                </li>
+                {players && players.map((item) => (
+                    <a
+                        href='#!'
+                        className='collection-item' 
+                        key={item._id}
+                        onClick={updateCurrentPlayer.bind(this, item)}>
+                        {`${item.firstName} ${item.lastName}`}
+                    </a>
+                ))}
+            </ul>
         </div>
     );
 }
